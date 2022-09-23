@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Creació d'una finestra</title>
+</head>
+
+<body>
+  <script>
+    let finestra =  open("Ventana_Flotante.html", "GOOGLE", "width=250px", "height=300px");
+
+    setTimeout(function() {
+      finestra.close();
+    }, 10000);
+    function crearFinestra(nom) {
+   
+   finestra = open("Ventana_Flotante.html", "GOOGLE", "width=250px", "height=300px");
+    }
+    setTimeout(function() {
+      let nom = prompt("Posa el nom de la finestra:", "Nom");
+      crearFinestra(nom);
+    }, 2000);
+
+    
+  </script>""
+</body>
+
+</html>

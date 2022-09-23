@@ -1,0 +1,45 @@
+<html>
+<head> 
+   <style> 
+      .rojo { color: red; } 
+      .azul { color: blue; } 
+      .verde { color: green; } 
+   </style> 
+</head>
+<body>
+   <p id="texto1" class="color rojo"> Párrafo rojo </p>
+   <div id="texto2" class="color azul"> Párrafo azul </div>
+   <p id="texto3" class="color verde"> Párrafo verde </p>
+   <script>
+      //Buscamos por clase
+      var elemento = document.querySelector(".color");
+      //Mostramos resultado
+      if (elemento) {
+         document.write('Existe un elemento con clase "color"<br>');
+         console.log('Existe un elemento con clase "%s"', "color"); //herramienta de desarrollo
+      } else {
+         document.write('No hay elementos con la clase "color"<br>');
+         console.warn('No hay elementos con la clase "color"'); //herramienta de desarrollo
+      }
+      //Buscamos por identificador
+      var elemento = document.querySelector("#texto4");
+      //Mostramos resultado
+      if (elemento) {
+         document.write('Existe un elemento con id "texto4"<br>');
+         console.log('Existe un elemento con id "texto4"'); //herramienta de desarrollo
+      } else {
+         document.write('No existe un elemento con id "texto4"<br>');
+         console.warn('No existe un elemento con id "%s"', "texto4"); //herramienta de desarrollo
+      }
+      //Buscamos por etiqueta y clase
+      var elemento = document.querySelector("p.verde");
+      //Mostramos resultado
+      if (elemento) {
+      document.write('Existe un parrafo con clase "verde"<br>');
+      } else {
+         document.write('No existe un parrafo con clase "verde"<br>');
+         console.warn('No existe un parrafo con clase "%s"', "verde"); //herramienta de desarrollo
+      }
+   </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script language="JavaScript">
+    // funcion para calcular la hora local en una ciudad dada la diferencia horaria.
+    function calcTime(city, offset) {
+      // creamos el objeto Date (la selecciona de la máquina cliente)
+      d = new Date();
+
+      // lo convierte  a milisegundos y añade la dirferencia horaria
+      // recupera la hora en formato UTC
+      utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+
+      // crea un nuevo objeto Date usando la diferencia dada.
+      nd = new Date(utc + (3600000 * offset));
+
+      // devuelve la hora como string.
+      return "La hora actual en " + city + " es: " + nd.toLocaleString();
+    }
+  
+      //España
+      alert(calcTime('España', '+2'));
+      //Bombay
+      alert(calcTime('Bombay', '+5.5'));
+      //Singapur time
+      alert(calcTime('Singapur', '+8'));
+      //Londres
+      alert(calcTime('Londres', '+1'));
+    
+  </script>
+</head>
+
+<body>
+  <div>
+    Muestra un menú con las distintas zonas horarias, pide al usuario que indique la zona horaria de la que desea
+    conocer la hora y muestre la hora local del lugar seleccionado.
+    <br />
+    <h2>Zonas horarias:</h2>
+    <ul>
+      <li><span class="red"">0)</span>UTC -12 : Línea internacional de fecha del oeste</li>
+      <li><span class=" red"">1)</span>UTC -11 : Isla Midway, Samoa</li>
+      <li><span class="red"">2)</span>UTC -10 : Hawai</li>
+      <li><span class=" red"">3)</span>UTC -9 : Alaska</li>
+      <li><span class="red"">4)</span>UTC -8 : Hora del pacífico (USA y Canadá)</li>
+      <li><span class=" red"">5)</span>UTC -7 : Hora de las montañas rocosas (USA y Canadá)</li>
+      <li><span class="red"">6)</span>UTC -6 : América central</li>
+      <li><span class=" red"">7)</span>UTC -5 : Hora central (USA y Canadá)</li>
+      <li><span class="red"">8)</span>UTC -4 : Hora del Atlántico (Canadá)</li>
+      <li><span class=" red"">99)</span>UTC -3 : Buenos Aires, Asunción, Brasilia, Montevideo</li>
+      <li><span class="red"">10)</span>UTC -2 : Atlántico central</li>
+      <li><span class=" red"">11)</span>UTC -1 : Azores</li>
+      <li><span class="red"">12)</span>UTC 0 : Hora del meridiano de Greenwich, Londres, Dublín</li>
+      <li><span class=" red"">13)</span>UTC +1 : París, Madrid, Barcelona, Roma</li>
+      <li><span class="red"">14)</span>UTC +2 : El Cairo</li>
+      <li><span class=" red"">15)</span>UTC +3 : Nairobi</li>
+      <li><span class="red"">16)</span>UTC +4 : Bakú</li>
+      <li><span class=" red"">17)</span>UTC +5 : Ekaterimburgo</li>
+      <li><span class="red"">18)</span>UTC +6 : Astana</li>
+      <li><span class=" red"">19)</span>UTC +7 : Bangkok</li>
+      <li><span class="red"">20)</span>UTC +8 : Ulán Bator</li>
+      <li><span class=" red"">21)</span>UTC +9 : Tokio</li>
+      <li><span class="red"">22)</span>UTC +10 : Sidney</li>
+      <li><span class=" red"">23)</span>UTC +11 : Islas Salomón</li>
+      <li><span class="red"">24)</span>UTC +12 : Wellington</li>
+    </ul>
+      <button onclick="input = parseInt(prompt('Introduce una opción del 0 al 24')); alert(calcTime('la ciudad elegida', '+2'));">Introduce nro ciudad</button>
+    
+</div>
+
+
+ 
+
+</body>
+
+</html>

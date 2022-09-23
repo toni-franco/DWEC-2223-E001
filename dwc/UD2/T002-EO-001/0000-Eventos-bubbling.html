@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		div {
+			background-color: coral;
+			border: 1px solid;
+			padding: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="miDiv">
+		<button id="miBtn">Click me</p>
+	</div>
+	<script>
+			document.getElementById("miDiv").addEventListener("click", otro_clic, false);
+			document.getElementById("miBtn").addEventListener("click", clic     , false);
+
+			function clic(e) {
+				alert("clic al Btn");
+				//e.stopPropagation();
+				
+			}
+			function otro_clic() {
+				alert("clic al div");
+			}
+	</script>
+
+</body>
+</html>

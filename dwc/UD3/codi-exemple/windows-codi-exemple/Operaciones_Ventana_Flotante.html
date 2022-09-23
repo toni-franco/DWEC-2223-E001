@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Operaciones con ventanas Flotantes</title>
+        
+        <script>
+            var ventana;
+            function abrirVentana() {
+                ventana = open("Ventana_Flotante.html", "GOOGLE", "width=250px, height=300px");
+            }
+
+            function abrirVentanaYdetener() {
+                ventana = open("Ventana_Flotante.html", "GOOGLE", "width=250px, height=300px");
+                ventana.stop();
+            }
+
+            function cerrarVentana() {
+                ventana.close();
+            }
+
+            function darfoco() {
+                ventana.focus();
+            }
+
+            function quitarfoco() {
+                ventana.blur();
+            }
+
+            function scrollAbsoluto() {
+                window.scrollTo(0,1000);
+            }
+
+            function scrollRelativo() {
+                window.scrollBy(0,10);
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1 id="titulo1">Operaciones con ventanas Flotantes</h1>
+        <div>
+            Crea una página web que realice las siguientes funciones:
+            <br />
+            Imprimir, Abrir ventana (figura2), Abrir ventana y detenerla, Cerrar ventana nueva, Dar foco ventana nueva, Quitar foco ventana nueva, Scroll absoluto (0, 1000) y scroll relativo (0, 10).
+        </div>
+
+        <br /><br />
+
+        <div>
+            <form>
+                <input type="button" value="Imprimir" onclick="print();" />
+                <input type="button" value="Abrir Ventana"
+                       onclick="abrirVentana();" />
+                <input type="button" value="Abrir Ventana y detenerla"
+                       onclick="abrirVentanaYdetener();" />
+                <input type="button" value="Cerrar ventana nueva"
+                       onclick="cerrarVentana();" />
+                <input type="button" value="Dar foco a una ventana nueva"
+                       onclick="darfoco();" />
+                <input type="button" value="Quitar foco ventana nueva"
+                       onclick="quitarfoco();" />
+                <input type="button" value="Scroll absoluto"
+                       onclick="scrollAbsoluto();" />
+                <input type="button" value="Scroll relativo"
+                       onclick="scrollRelativo();" />
+            </form>
+        </div>
+
+        <div id="resultado">
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fugit iure earum minima dolores deleniti obcaecati blanditiis distinctio! Officiis similique, amet mollitia officia fugiat saepe ea assumenda nisi illum. Vel, dolores maxime laboriosam vitae voluptatem eum, veniam repellat molestias blanditiis, id quia nam itaque voluptatum eveniet voluptate dolorum magnam excepturi inventore facilis. Doloremque iste aspernatur culpa officia blanditiis voluptatum officiis animi obcaecati vero unde a, laboriosam odit eveniet sint, facere, accusamus corrupti temporibus quasi iusto hic soluta dolores magni facilis ratione. Molestiae libero iste consectetur? Mollitia iure, facere dignissimos sit quam, neque doloribus expedita possimus vero quaerat blanditiis libero! Repellendus neque magni odio, laudantium cumque voluptates, tenetur quod iure illo facere eum maiores pariatur ullam excepturi laboriosam. Quam tempora quibusdam, id illo aut aspernatur. Quisquam numquam deleniti quaerat sit incidunt quo molestias. Nostrum doloribus tempora excepturi quia rem vel numquam animi natus sunt, autem nesciunt, voluptate libero odit perferendis? Obcaecati expedita minus quaerat molestiae consectetur facere modi, quisquam itaque. Aliquam, hic impedit rerum harum iusto eos, quos eligendi totam modi vero magni! Culpa magnam itaque quia magni ipsa eius repudiandae dicta esse. Placeat, natus architecto eveniet quo nulla deleniti explicabo eos tempora asperiores inventore nobis fugiat vitae? Cupiditate, assumenda nesciunt.
+        </div>
+    </body>
+</html>
