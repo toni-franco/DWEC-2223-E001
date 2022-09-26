@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Edad en Años, Meses y Días</title>
+      
+    </head>
+
+    <body>
+        <h1 id="titulo1">Edad en Años, Meses y Días</h1>
+        <div class="resultado">
+          
+        </div>
+
+        <script>
+            var hoy = new Date();
+            var nacimiento = new Date('2000, 1, 1');
+            var edad = (hoy.getFullYear() - nacimiento.getFullYear());
+            var meses = hoy.getMonth() - nacimiento.getMonth();
+            var dias = hoy.getDate() - nacimiento.getDate();
+
+            // Comprobar si meses es anterior al actual para restar 1 al año
+            if (meses < 0 || (meses === 0 && hoy.getDate() < nacimiento.getDate())) {
+                edad--;
+            }
+
+            document.write(edad + " años, " + meses + " meses, " + dias + " días.");
+        </script>
+    </body>
+</html>
