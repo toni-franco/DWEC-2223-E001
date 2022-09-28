@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let ocupacions = ['Sense ocupació', 'Policia', 'Militar', 'Metge', 'Tècnic', 'Mecànic', 'Delinqüent'];
+
+        let supervivents = {
+            'Barcelona': 23140,
+            'Girona': 6789,
+            'Lleida': 11298,
+            'Tarragona': 19830
+        };
+
+        console.log('Llistat de professions');
+        for (let clau in ocupacions) {
+            console.log(ocupacions[clau]);
+        }
+
+        console.log('Llistat de supervivents per províncies')
+        for (let provincia in supervivents) {
+            console.log(provincia, ':', supervivents[provincia]);
+        }
+        console.log(supervivents[0]); // undefined
+    </script>
+</body>
+
+</html>

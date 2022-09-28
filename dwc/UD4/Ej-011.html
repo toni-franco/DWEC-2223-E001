@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Si treballem amb classes podem definir valors per defecte
+    en la classe
+    <script>
+        class Persona {
+
+            constructor(nom) {
+                this.nom = nom;
+            }
+
+            edat = 0
+            ocupacio = 'desconeguda'
+        }
+
+        let persona = new Persona('Ricard');
+
+        console.log(persona.nom);
+        console.log(persona['edat']);
+        console.log(persona['ocupacio']);
+
+        console.log("=".repeat(15));
+        persona.edat = 40;
+        persona.ocupacio = 'Policia';
+
+        console.log(persona.nom);
+        console.log(persona['edat']);
+        console.log(persona['ocupacio']);
+    </script>
+</body>
+
+</html>

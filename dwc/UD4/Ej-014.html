@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    les funcions a JavaScript es poden declarar amb nom o com a
+    funcions anònimes.
+    En aquest cas tenim mètodes amb referències a funcions externes
+
+    <script>
+        // Funció amb nom !!!
+        function funcioPresentacio() {
+            console.log(`Hola, em dic ${this.nom}, tinc ${this.edat} anys i sóc ${this.ocupacio}`);
+        }
+        // Funció sense nom
+        const funcioComiat = function () {
+            console.log(`${this.nom} abandona la sala`);
+        };
+
+        let persona = {
+            nom: 'Ricard',
+            ocupacio: 'Policia',
+            edat: 40,
+            presentacio: funcioPresentacio,
+            comiat: funcioComiat
+        };
+
+        // El context d'aquestes invocacions és l'objecte persona
+        persona.presentacio();
+        persona.comiat();
+
+        // El context d'aquestes invocacions es l'espai global (window)
+        funcioPresentacio();
+        funcioComiat();
+    </script>
+</body>
+
+</html>

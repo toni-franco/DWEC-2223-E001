@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    la desestructuració permet definir valors per defecte
+    <script>
+        function mostrarDades({ nom = "Lluis", ocupacio = "Comerciant", edat }) {
+            console.log(`Nom: ${nom}`);
+            console.log(`Ocupació: ${ocupacio}`);
+            console.log(`Edat: ${edat}`)
+        };
+
+        let dadesPersona = {
+            nom: 'Ricard',
+            edat: 40
+        };
+
+        mostrarDades(dadesPersona);
+    </script>
+</body>
+
+</html>

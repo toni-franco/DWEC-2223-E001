@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let MOTOR_DEL_JOC = {
+            ocupacions: ['Sense ocupació', 'Policia', 'Militar', 'Metge', 'Tècnic', 'Mecànic', 'Delinqüent'],
+
+            supervivents: {
+                'Barcelona': 23140,
+                'Girona': 6789,
+                'Lleida': 11298,
+                'Tarragona': 19830
+            },
+
+            jugadors: [{
+                'nom': 'Ricard',
+                'ocupacio': 'Policia',
+                'edat': 40,
+                'lloc de partida': 'Cambrils'
+            }, {
+                'nom': 'Patrici',
+                'ocupacio': 'Delinqüent',
+                'edat': 35,
+                'lloc de partida': 'Reus'
+            }]
+        }
+
+        console.log('Tercera ocupació:', MOTOR_DEL_JOC.ocupacions[3]);
+        console.log('Supervivents a Girona:', MOTOR_DEL_JOC.supervivents['Girona']);
+        console.log('Nom del primer jugador:', MOTOR_DEL_JOC.jugadors[0]['nom']);
+        console.log('Ocupació del primer jugador:', MOTOR_DEL_JOC.jugadors[0].ocupacio);
+    </script>
+</body>
+
+</html>

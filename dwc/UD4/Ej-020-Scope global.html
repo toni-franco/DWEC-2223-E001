@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Manipular Lista</title>
+
+
+</head>
+
+<body>
+
+    <p id="div1">Parrafo 1</p>
+    <p id="div2">Parrafo 2</p>
+    <p id="div3">Parrafo 3</p>
+    <p id="div4">Parrafo 4</p>
+    <p id="div5">Parrafo 5</p>
+    
+
+    <script>
+
+
+        function Visible(nom, color) {
+            miLista = document.getElementById(nom);
+            miLista.style.color = color;
+        }
+
+        (function () {
+
+            function Visible2(nom, color) {
+                miLista = document.getElementById(nom);
+                miLista.style.color = color;
+            }
+            Visible('div3',"orange");
+            Visible2("div4", "red")
+
+        })();
+        Visible("div1", "blue");
+        Visible2("div2", "green");
+    </script>
+
+    <script>
+            Visible('div5',"Relleno div 1");
+            Visible2('div5',"Relleno div 1");
+    </script>
+
+
+    
+
+</body>
+
+</html>

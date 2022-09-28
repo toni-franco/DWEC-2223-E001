@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Desestructurar dades:
+    mostrarDades({ nom, ocupacio, edat })
+    Dins la funció treballem amb vars inconnècxes
+    <script>
+        function mostrarDades({ nom, ocupacio, edat }) {
+            console.log(`Nom: ${nom}`);
+            console.log(`Ocupació: ${ocupacio}`);
+            console.log(`Edat: ${edat}`)
+        };
+
+        let dadesPersona = {
+            nom: 'Ricard',
+            ocupacio: 'Policia',
+            edat: 40
+        };
+
+        mostrarDades(dadesPersona);
+    </script>
+</body>
+
+</html>

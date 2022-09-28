@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    L'objecte persona pot definir els mètodes de moltes formes.
+    pag 21.
+    <script>
+        // Funció amb nom !!!
+        function funcioPresentacio() {
+            console.log(`Hola, em dic ${this.nom}, tinc ${this.edat} anys i sóc ${this.ocupacio}`);
+        }
+
+
+        let persona = {
+            nom: 'Ricard',
+            ocupacio: 'Policia',
+            edat: 40,
+            presentacio: funcioPresentacio,
+            comiat: function () {
+                console.log(`${this.nom} abandona la sala`);
+            },
+
+            atra_forma() { console.log(`${this.nom} abandona la sala`); },
+
+            parlar: function (missatge, buit) {
+                console.log('${this.nom} diu: ${missatge}');
+                console.log('Contingut de buit: ${buit}');
+                console.log('Contingut d\'arguments: ', arguments);
+            }
+        };
+
+        // El context d'aquestes invocacions és l'objecte persona
+        persona.presentacio();
+        persona.comiat();
+        persona.atra_forma();
+        persona.parlar('bon dia!');
+
+        // El context d'aquestes invocacions es l'espai global (window)
+        funcioPresentacio();        
+    </script>
+</body>
+
+</html>
