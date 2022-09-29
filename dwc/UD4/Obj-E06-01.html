@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  En ES6 veamos los getters y setters
+  <script>
+    class Product {
+      // constructor
+      constructor(name, year, price) {
+        this.name = name;
+        this.year = year;
+        this.price = price;
+      }
+
+      // getter
+      get price() {
+        return this._price;
+      }
+
+      // setter
+      set price(price) {
+        // https://blog.abelotech.com/posts/number-currency-formatting-javascript/
+        this._price = price.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' €';
+      }
+
+      // método
+      generateBarcode() {
+        console.log('Método generateBarcode');
+      }
+    }
+
+    // instancia clase
+    let iphone = new Product('iPhone', 2018, 999);
+
+    // llamada método
+    iphone.generateBarcode(); // Método generateBarcode
+    console.log(iphone.name); // iPhone
+    console.log(iphone.price); // precio formateado
+    console.log(iphone.price); // precio formateado
+    
+  </script>
+
+</body>
+
+</html>

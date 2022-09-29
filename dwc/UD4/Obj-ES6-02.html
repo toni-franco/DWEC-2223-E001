@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // clase
+        class Product {
+            // constructor
+            constructor(name, year, price) {
+                this.name = name;
+                this.year = year;
+                this.price = price;
+                this.var1=2;
+            }
+
+            static var1; // No funciona el concepto de "static"
+
+            // getter
+            get price() {
+                return this._price;
+            }
+
+            // setter
+            set price(price) {
+                // https://blog.abelotech.com/posts/number-currency-formatting-javascript/
+                this._price = price.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' €';
+            }
+
+            // método
+            generateBarcode() {
+                console.log('Método generateBarcode');
+            }
+
+            // método estático
+            static exampleStaticmethod() {
+                return 'Esto es un método estático que podemos llamar sin instanciar la clase.';
+            }
+        }
+
+        // llamada método estático
+        console.log(Product.exampleStaticmethod());
+
+        let iphone1 = new Product('iPhone', 2018, 999);
+        let iphone2 = new Product('iPhone', 2018, 999);
+        iphone1.var1=4;
+        // js no tiene variables estaticas 
+        console.log(iphone2.var1);
+
+    </script>
+</body>
+
+</html>

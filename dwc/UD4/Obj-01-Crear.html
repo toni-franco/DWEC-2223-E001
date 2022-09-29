@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Crear Objetos</title>
+
+        <script>
+            var mi_array = [];
+
+            function Producto_alimenticio(codigo, nombre, precio) {
+                this.codigo = codigo;
+                this.nombre = nombre;
+                this.precio = precio;
+
+                this.imprimeDatos = function() {
+                    var pintar = '';
+
+                    for (let x in this) {
+                        if (typeof this[x] != 'function') {
+                            pintar += x + ' → ' + this[x] + '<br />';
+                        }
+                    }
+
+                    return pintar;
+                }
+            }
+
+            mi_array[0] = new Producto_alimenticio(01, 'Moscatel', 5);
+            mi_array[1] = new Producto_alimenticio(02, 'Tarta', 12);
+            mi_array[2] = new Producto_alimenticio(03, 'Queso', 6);
+
+            for (let x of mi_array) {
+                document.write(x.imprimeDatos() + '<br />');
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

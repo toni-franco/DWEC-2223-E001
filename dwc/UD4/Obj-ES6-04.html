@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Observa que han puesto el extends
+    <script>
+        // clase
+        class Product {
+            // constructor
+            constructor(name, year, price) {
+                this.name = name;
+                this.year = year;
+                this.price = price;
+            }
+
+            // getter
+            get price() {
+                return this._price;
+            }
+
+            // setter
+            set price(price) {
+                // https://blog.abelotech.com/posts/number-currency-formatting-javascript/
+                this._price = price.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' €';
+            }
+
+            // método
+            generateBarcode() {
+                console.log('Método generateBarcode');
+            }
+        }
+
+        // herencia
+        class Smartphone extends Product {
+            // constructor
+            constructor(name, year, price, os) {
+                super(name, year, price);
+                this.os = os;
+            }
+        }
+
+        // instancia clase
+        let iphone = new Smartphone('iPhone', 2018, 999, 'iOS');
+        console.log(iphone);
+        console.log(iphone.price);
+        iphone.generateBarcode();
+
+    </script>
+</body>
+
+</html>

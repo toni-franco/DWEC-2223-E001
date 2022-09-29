@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    En JavaScript tradicional, para heredar una clase de otra, lo hacemos así
+    <script>
+        function Product(name, year, price) {
+            this.name = name;
+            this.year = year;
+            this.price = price;
+        }
+
+        // método
+        Product.prototype.generateBarcode = function () {
+            console.log('Método generateBarcode');
+        }
+
+        // constructor
+        function Smartphone(name, year, price, os) {
+            Product.call(this, name, year, price);
+            this.os = os;
+        }
+
+        // herencia
+        Smartphone.prototype = Object.create(Product.prototype);
+        Smartphone.prototype.constructor = Smartphone;
+
+
+        // instancia clase
+        var iphone = new Smartphone('iPhone', 2018, 999, 'iOS');
+
+        // llamada método
+        console.log(iphone.name); // iPhone
+        console.log(iphone.os); // iOS
+        iphone.generateBarcode(); // Método generateBarcode
+    </script>
+</body>
+
+</html>
