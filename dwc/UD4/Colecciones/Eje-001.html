@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let exempleArray = ["Verd", "Ambar", "Vermell", "Vermell"];
+
+        let exempleSet = new Set();
+        exempleSet.add("verd");
+        exempleSet.add("ambar");
+        exempleSet.add("vermell");
+        exempleSet.add("vermell");
+
+        let exempleMap = new Map();
+        exempleMap.set("verd", "Passar");
+        exempleMap.set("ambar", "Compte!");
+        exempleMap.set("vermell", "Prohibit");
+        exempleMap.set("vermell", "No passar!");
+
+        let exempleObject = {
+            verd: "Passar",
+            ambar: "Compte!",
+            vermell: "Prohibit",
+            vermell: "No passar!"
+        };
+
+        console.log(exempleArray, exempleArray.length);
+        console.log(exempleSet, exempleSet.size);
+        console.log(exempleMap, exempleMap.size);
+        console.log(exempleObject, Object.keys(exempleObject).length);
+
+        console.log("Iteració array: utilitzant l’índex");
+        for (let i = 0; i < exempleArray.length; i++) {
+            console.log(exempleArray[i]);
+        }
+
+        console.log("Iteració array: accedint directament al valor");
+        for (let element of exempleArray) {
+            console.log(element);
+        }
+
+        console.log("Iteració set");
+        for (let element of exempleSet) {
+            console.log(element);
+        }
+        console.log("Iteració object");
+        for (let nom in exempleObject) {
+            console.log(exempleObject[nom]);
+        }
+
+        console.log("Iteració map");
+        for (let element of exempleMap) {
+            console.log(element);
+        }
+
+        console.log("Iteració map: desesctructurat");
+        for (let [clau, valor] of exempleMap) {
+            console.log(`Clau: ${clau} + valor: ` + valor);
+        }
+
+        for (let x of exempleMap.keys()) {
+            document.write(x + '<br />');
+        }
+        for (let x of exempleMap.values()) {
+            document.write(x + '<br />');
+        }
+
+
+
+        console.log(exempleMap.has('verd'));
+
+        exempleMap.delete('verd');
+
+        console.log("Iteració map: desesctructurat");
+        for (let [clau, valor] of exempleMap) {
+            console.log(`Clau: ${clau} + valor: ` + valor);
+        }
+
+    </script>
+</body>
+
+</html>
