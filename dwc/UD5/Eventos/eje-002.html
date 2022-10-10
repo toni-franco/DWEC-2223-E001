@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   
+
+    <button id="primer">
+        Fes clic al primer element!
+    </button>
+    <button>
+        Aquí no fa res, no té cap id per referir-nos
+    </button>
+    <button id="segon">
+        Fes clic al segon element!
+    </button>
+    <button id="tercer">
+        Aquí si que tenim id, però no hem afegit cap funció
+
+    </button>
+
+    <script>
+        // Guardem els elements en variables
+        let primerElement = document.getElementById('primer'),
+            segonElement = document.getElementById('segon');
+
+        // Assignem a cada element una funció que serà cridada quan s'hi faci clic
+        primerElement.onclick = function (e) {
+            alert('Clic al primer element de tipus: ' + e.type);
+        }
+
+
+        segonElement.onclick = e => alert('Clic al segon element de tipus: ' + e.type);
+    </script>
+
+
+</body>
+
+
+</html>
