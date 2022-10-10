@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>EO-001</title>
+    </title>
+</head>
+
+<body>
+    <script type="text/javascript" src="./js/Class-amb-funcions.js"></script>
+   <!-- <script type="text/javascript" src="./js/Class-amb-ES2015.js"></script> -->
+        
+
+    <script>
+        document.write("<h4>Furgoneta<br></h4>");
+        var vh1 = new furgoneta("Ford", "JX487", "rojo", "Madrid", "1400cc", "10");
+        vh1.mostrarDatos();
+        document.write("<br>");
+        vh1.acelerar();
+        vh1.acelerar();
+        vh1.acelerar();
+        vh1.frenar();
+
+        document.write("<h4>Todoterreno<br></h4>");
+        var vh2 = new Todoterreno("Toyota","23423","amarillo","Paris","1300cc","5");
+
+        vh2.mostrarDatos();
+        document.write("<br>");
+        vh2.acelerar();
+        vh2.acelerar();
+        vh2.frenar();
+
+    </script>
+
+
+</body>
+
+</html>
