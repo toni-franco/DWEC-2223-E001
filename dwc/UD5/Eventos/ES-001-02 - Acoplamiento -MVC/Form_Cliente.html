@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UD5-EO-001</title>
+</head>
+
+<body>
+
+  <form>
+    <p>
+      <label>Title</label><br>
+      <label>
+        <input type="radio" name="title" id="mr" value="mr">
+        Mr
+      </label>
+      <label>
+        <input type="radio" name="title" id="mrs" value="mrs">
+        Mrs
+      </label>
+      <label>
+        <input type="radio" name="title" id="miss" value="miss">
+        Miss
+      </label>
+    </p>
+    <p>
+      <label>First name</label><br>
+      <input type="text" id="fname" name="first_name">
+    </p>
+    <p>
+      <label>Last name</label><br>
+      <input type="text" id="lname" name="last_name">
+    </p>
+    <p>
+      <label>Email</label><br>
+      <input type="email" name="email" id="email" required>
+    </p>
+    <p>
+      <label>Phone number</label><br>
+      <input type="tel" id="tel" name="phone">
+    </p>
+    <p>
+      <label>Password</label><br>
+      <input type="password" id="passwd" name="password">
+    </p>
+    <p>
+      <label>Country</label><br>
+      <select id="country">
+        <option>China</option>
+        <option>India</option>
+        <option>United States</option>
+        <option>Indonesia</option>
+        <option>Brazil</option>
+      </select>
+    </p>
+    <p>
+      <label>
+        <input type="checkbox" id="terms" value="terms">
+        I agree to the <a href="/terms">terms and conditions</a>
+      </label>
+    </p>
+    
+    <p>
+      Esta forma de añadir los eventos genera acoplamiento:
+      <input id="btn1" type="button" value="btn1" onclick="Control_Cliente.rellenar(Clientes[0])"  >
+    
+      <input id="btn2" type="button" value="btn2" onclick="Control_Cliente.rellenar(Clientes[1])"  >      
+    </p>
+    <p>
+      Esta forma está más desacoplada del controlador
+    <p>
+      <button id="aDiv1">Púlsame 1</button>
+      <button id="aDiv2">Púlsame 2</button>
+    </p>
+   
+  </form>
+</body>
+<script type="text/javascript" src="./Form_Cliente_Modelo.js"></script>
+<script type="text/javascript" src="./Form_Cliente_Controlador.js"></script>
+
+
+
+</html>
