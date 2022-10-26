@@ -1,0 +1,27 @@
+<table class="table table-striped" id="dashTable">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody id="task-row">    
+            </tbody>
+        </table>
+
+
+function addBowler() { 
+    var table = document.getElementById("bowlerList");
+    var emptyRow = document.getElementById("empty");
+    if(emptyRow){
+        emptyRow.parentNode.removeChild(emptyRow)
+    }
+
+    var newBowler = document.getElementsByName('bowlersName')[0].value;
+    var tr = document.createElement('tr');
+    var td = tr.appendChild(document.createElement('td'));
+    td.innerHTML = newBowler;
+    table.appendChild(tr);
+}
