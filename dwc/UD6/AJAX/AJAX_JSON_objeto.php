@@ -22,7 +22,6 @@ $a= $age['Peter'];
 
 //echo "Edat : $a <br>";
 
-
 echo $jsonobj;
 
 ?>

@@ -38,5 +38,4 @@ if ($conexion ->connect_error){
     echo json_encode($salida);
 }
 $conexion->close();
-
 ?>
