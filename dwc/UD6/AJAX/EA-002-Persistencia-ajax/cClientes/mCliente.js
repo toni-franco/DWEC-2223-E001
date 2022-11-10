@@ -1,4 +1,3 @@
-var aClientes = [];
 
 // Pojo Cliente
 class pCliente {
@@ -14,15 +13,7 @@ class pCliente {
 }
 
 class mClientes {
-  constructor() {
-    
-
-    //INSERT INTO `clientes` (`id`, `genero`, `fname`, `lname`, `email`, `phone`, `passwd`, `country`) VALUES (NULL, 'mr', 'elvis', 'Wiliams', 'elvis@yo.es', '1291212', '121212', 'ws');
-
-
-
-
-  }
+  constructor() {  }
 
   getClientes(){     
      return aClientes;
@@ -30,7 +21,18 @@ class mClientes {
 
   AddCliente(cliente) {
     aClientes.push(cliente);
-    this.GuardaClientes();
+    //const jsonAEnviar = "json=" + JSON.stringify({user: user, points:points});
+    const jsonAEnviar = "json=" + JSON.stringify(cliente);
+    console.log(jsonAEnviar);
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../ins-clientes.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+    var aaa=xhr.send("json=" + jsonAEnviar );
+    console.log(aaa);
+
+   //  this.GuardaClientes();
   }
 
   Modificar(num, DN) {
@@ -58,12 +60,7 @@ class mClientes {
         if (this.readyState == 4 && this.status == 200) {
 
             var clientes = JSON.parse(this.responseText);
-            //var array = Array.from(this.responseText);
 
-             /* alumnos.foreach((item, index) {
-                      
-                        }
-            )*/
             for (var i =0; i<clientes.length;i++){ 
               var cliente= new pCliente(clientes[i][0],clientes[i][1],clientes[i][2],clientes[i][3],clientes[i][4],clientes[i][5],clientes[i][6]);
               aClientes.push(cliente);
@@ -71,8 +68,9 @@ class mClientes {
             
         }
     }
-   // var parametros = JSON.stringify(objeto);
-    xhr.open("GET", "../get-clientes.php", true);
+   
+    //xhr.open("GET", "../get-clientes.php", true); // TRUE -> asincrono 
+    xhr.open("GET", "../get-clientes.php", false); // false -> sincrono !!
     xhr.send();
 
 

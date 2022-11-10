@@ -1,4 +1,4 @@
-
+var aClientes = [];
 omClientes = new mClientes();  // Crea dos clientes
 aClientes=omClientes.getClientes();
 
@@ -59,12 +59,23 @@ class cCliente {
             document.getElementById("CargaClientes").addEventListener("click", function (event) {
                 omClientes.CargarClientes();
 
-                alert("parar");
+               if (aClientes.length<=0){
+                    for(var i=1;i<100000;i++){} // espera y carga clientes
+                    aClientes=omClientes.getClientes();
+                    ctlCliente.obj=aClientes[0];
+                    ctlCliente.VisualizoObj=0;
+                    ctlCliente.SetVista(aClientes[0]);
+                    event.preventDefault();                
+               }
+               else {                
+                    ctlCliente.obj=aClientes[0];
+                    ctlCliente.VisualizoObj=0;
+                    ctlCliente.SetVista(aClientes[0]);
+                    event.preventDefault(); 
+               }
 
-                ctlCliente.obj=aClientes[0];
-                ctlCliente.VisualizoObj=0;
-                ctlCliente.SetVista(aClientes[0]);
-                event.preventDefault();                
+                
+                           
                 
               });
 
@@ -126,10 +137,6 @@ class cCliente {
 }
 
 
-//omClientes = new mClientes();  // Crea dos clientes
-//aClientes=omClientes.getClientes();
-
-// oVCliente= new vCliente();
 
 ctlCliente = new cCliente();
 
