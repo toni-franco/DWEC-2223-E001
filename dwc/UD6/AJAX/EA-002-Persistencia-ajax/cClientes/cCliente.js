@@ -58,7 +58,11 @@ class cCliente {
             });
             document.getElementById("CargaClientes").addEventListener("click", function (event) {
                 omClientes.CargarClientes();
-
+                ctlCliente.obj=aClientes[0];
+                ctlCliente.VisualizoObj=0;
+                ctlCliente.SetVista(aClientes[0]);
+                event.preventDefault(); 
+              /*
                if (aClientes.length<=0){
                     for(var i=1;i<100000;i++){} // espera y carga clientes
                     aClientes=omClientes.getClientes();
@@ -74,7 +78,7 @@ class cCliente {
                     event.preventDefault(); 
                }
 
-                
+               */ 
                            
                 
               });
@@ -87,10 +91,10 @@ class cCliente {
     
         var elementsTitle = document.getElementsByName("title");
     
-        var title = "";
+        var genero = "";
         for (var i = 0; i < elementsTitle.length; i++) {
           if (elementsTitle[i].checked) {
-            title = elementsTitle[i].value;
+            genero = elementsTitle[i].value;
           }
         }
     
@@ -100,11 +104,10 @@ class cCliente {
         var phone = document.getElementById("tel").value;
         var password = document.getElementById("passwd").value;
         var country = document.getElementById("country").value;
-    
-        var cli = new pCliente(       
-          title,
-          firstname,
-          lastname,
+
+        var idCliente= aClientes[this.VisualizoObj].id;
+
+        var cli = new pCliente(idCliente,genero, firstname, lastname,
           email,
           phone,
           password,
@@ -133,6 +136,9 @@ class cCliente {
         document.getElementById('passwd').value = cliente.passwd;
         document.getElementById('country').value = cliente.country;
         document.getElementById('terms').checked = true;
+        document.getElementById('idsql').value=cliente.id;
+        
+
     }
 }
 

@@ -1,7 +1,8 @@
 
 // Pojo Cliente
 class pCliente {
-  constructor(genero, fname, lname, email, phone, passwd, country) {
+  constructor(id,genero, fname, lname, email, phone, passwd, country) {
+    this.id=id;
     this.genero = genero;
     this.fname = fname;
     this.lname = lname;
@@ -21,16 +22,37 @@ class mClientes {
 
   AddCliente(cliente) {
     aClientes.push(cliente);
+
     //const jsonAEnviar = "json=" + JSON.stringify({user: user, points:points});
     const jsonAEnviar = "json=" + JSON.stringify(cliente);
     console.log(jsonAEnviar);
-    
+   
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../ins-clientes.php", true);
+    xhr.open("POST", "../ins-clientes.php",false);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var aaa="";
+    /*
+    xhr.onreadystatechange=function()
+        {
+        if (xhr.readyState==4 && xhr.status==200)
+          {
+          aaa=xhr.responseText;
+          console.log(aaa);
+          }
+        }
+   
+    */  
+
+    xhr.send(jsonAEnviar );
+    Estado=xhr.responseText;
+    //console.log(aaa);
+    if (Estado ==="Error")
+        alert("Error al insertar");
+    else{
+      cliente.id=Estado;
+      aClientes.push(cliente);
+    }
     
-    var aaa=xhr.send("json=" + jsonAEnviar );
-    console.log(aaa);
 
    //  this.GuardaClientes();
   }
@@ -62,7 +84,7 @@ class mClientes {
             var clientes = JSON.parse(this.responseText);
 
             for (var i =0; i<clientes.length;i++){ 
-              var cliente= new pCliente(clientes[i][0],clientes[i][1],clientes[i][2],clientes[i][3],clientes[i][4],clientes[i][5],clientes[i][6]);
+              var cliente= new pCliente(clientes[i][0],clientes[i][1],clientes[i][2],clientes[i][3],clientes[i][4],clientes[i][5],clientes[i][6],clientes[i][7]);
               aClientes.push(cliente);
             }
             

@@ -4,9 +4,10 @@
     $password = "";
     $bbdd = "ada";
 
-    $objeto=$_GET['json'];    
+    $objeto=$_POST['json'];    
     
-     $cliente=json_decode($objeto,true); //Convertir a un array asociativo (parameter to true)
+    $cliente=json_decode($objeto,true); //Convertir a un array asociativo (parameter to true)
+   // var_dump($cliente);
 /*
     echo "Cliente:";
     echo "<br>";
@@ -19,8 +20,8 @@
     echo "<br>";
     echo "<br>";
     var_dump($cliente);
-    echo "<br>";    echo "<br>";
-*/    
+    echo "<br>";    echo "<br>" 
+*/   
 
     // Create connection
     $conn = new mysqli($servidor, $usuario, $password, $bbdd);
@@ -37,10 +38,11 @@
     if ($conn->query($sql) === TRUE) {
       //echo "<br>";
       //echo "nro registro insertado: ";
-      echo $last_id = $conn->insert_id; 
+      echo $conn->insert_id; 
    
     } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+      //echo "Error: " . $sql . "<br>" . $conn->error;
+      echo "Error";
     }
 
     $conn->close();
