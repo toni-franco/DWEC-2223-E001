@@ -17,15 +17,15 @@ class cCliente {
                 event.preventDefault();
 
             });
-            document.getElementById("aDiv2").addEventListener("click", function(event)
+            document.getElementById("Elimina").addEventListener("click", function(event)
             {
-                ctlCliente.obj=aClientes[1];
-                ctlCliente.VisualizoObj=1;
-                ctlCliente.SetVista(aClientes[1]);    
-                event.preventDefault();
+            
+              omClientes.DelCliente(ctlCliente.VisualizoObj);
+               
+              event.preventDefault();
             });
 
-            document.getElementById("ModificarCliente").addEventListener("click", function(event)
+            document.getElementById("Modificar").addEventListener("click", function(event)
             {
                 ctlCliente.obj=ctlCliente.getVista();
                 omClientes.Modificar(ctlCliente.VisualizoObj, ctlCliente.obj )                
@@ -119,7 +119,7 @@ class cCliente {
     
 
     SetVista(cliente){       
-
+        document.getElementById('idsql').value=cliente.id;
         if (document.getElementById('mr').value == cliente.genero) {
             document.getElementById('mr').checked = true;
         }
@@ -136,9 +136,13 @@ class cCliente {
         document.getElementById('passwd').value = cliente.passwd;
         document.getElementById('country').value = cliente.country;
         document.getElementById('terms').checked = true;
-        document.getElementById('idsql').value=cliente.id;
+        
         
 
+    }
+    
+    Refresh(id){
+      this.SetVista(aClientes[id]);
     }
 }
 

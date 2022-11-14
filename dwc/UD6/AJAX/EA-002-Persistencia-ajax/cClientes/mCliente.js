@@ -21,11 +21,11 @@ class mClientes {
   }
 
   AddCliente(cliente) {
-    aClientes.push(cliente);
+    //aClientes.push(cliente);
 
     //const jsonAEnviar = "json=" + JSON.stringify({user: user, points:points});
     const jsonAEnviar = "json=" + JSON.stringify(cliente);
-    console.log(jsonAEnviar);
+   // console.log(jsonAEnviar);
    
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "../ins-clientes.php",false);
@@ -44,20 +44,67 @@ class mClientes {
     */  
 
     xhr.send(jsonAEnviar );
-    Estado=xhr.responseText;
+    var Estado=xhr.responseText;
     //console.log(aaa);
     if (Estado ==="Error")
         alert("Error al insertar");
     else{
       cliente.id=Estado;
       aClientes.push(cliente);
+      ctlCliente.Refresh(aClientes.length-1);
     }
-    
+       
 
    //  this.GuardaClientes();
   }
 
+  DelCliente(numElemArray) {
+    
+
+    //const jsonAEnviar = "json=" + JSON.stringify({user: user, points:points});
+    const jsonAEnviar = "json=" + JSON.stringify(aClientes[numElemArray]);
+    console.log(jsonAEnviar);
+   
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../del-clientes.php",false);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var aaa="";
+
+
+    xhr.send(jsonAEnviar);
+    var Estado=xhr.responseText;
+    //console.log(aaa);
+    if (Estado ==="Error")
+        alert("Error al eliminar");
+    else{
+      
+      aClientes.splice(numElemArray,1);
+      ctlCliente.Refresh(numElemArray);
+    }
+    
+  }
+
+
+
   Modificar(num, DN) {
+
+  
+  const jsonAEnviar = "json=" + JSON.stringify(DN);
+  console.log(jsonAEnviar);
+ 
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "../mod-clientes.php",false);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  var aaa="";
+
+
+  xhr.send(jsonAEnviar);
+  var Estado=xhr.responseText;
+  //console.log(aaa);
+  if (Estado ==="Error")
+      alert("Error al eliminar");
+  else{
+    
     aClientes[num].genero = DN.genero;
     aClientes[num].fname = DN.fname;
     aClientes[num].lname = DN.lname;
@@ -65,7 +112,7 @@ class mClientes {
     aClientes[num].phone = DN.phone;
     aClientes[num].passwd = DN.passwd;
     aClientes[num].country = DN.country;
-    this.GuardaClientes();
+  }  
   }
 
   GuardaClientes(){    

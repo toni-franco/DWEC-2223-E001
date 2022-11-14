@@ -20,7 +20,7 @@ if ($conexion ->connect_error){
     //Conexión correcta
     
     
-    $sql = "SELECT genero, fname, lname,email,phone,passwd,country FROM clientes"; //" WHERE puntuacion >= $valor";
+    $sql = "SELECT id, genero, fname, lname,email,phone,passwd,country FROM clientes"; //" WHERE puntuacion >= $valor";
     
     $resultado = $conexion->query($sql);
 
