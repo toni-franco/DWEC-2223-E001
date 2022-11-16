@@ -33,6 +33,7 @@ class cClienteH {
 
             var result = omClientes.Modificar(pos, ctlCliente.obj)
             ctlCliente.Recargar();
+
             document.getElementById("Editar").style.display = "none";
             document.getElementById("Tabla").style.display = "block";
 
@@ -43,19 +44,26 @@ class cClienteH {
             document.getElementById("Tabla").style.display = "block";
         });
 
-
-        function BorrarFila(fila) {
-            document.getElementById("fila" + fila).remove();
-            omClientes.DelCliente(fila);
-        }
-        function SeleccionarFila(fila) {
-            oVCliente.posicion = fila;
-            console.log("Posicion: "+fila)
-            oVCliente.SetVista(omClientes.getCliente(fila));
-    
-        }
-
     }
+
+    BorrarFila(fila) {
+        // Borrar de la BD
+        var rdo=omClientes.DelCliente(fila);
+        if (rdo ==="1") {
+            document.getElementById("fila" + fila).remove();
+        }
+        
+    }
+
+    SeleccionarFila(fila) {
+        oVCliente.posicion = fila;
+        document.getElementById("Editar").style.display = "block";
+        document.getElementById("Tabla").style.display = "none";
+        console.log("Posicion: "+fila)
+        //oVCliente.SetVista(omClientes.getCliente(fila));
+        oVCliente.SetVista(aClientes[fila]);
+    }
+  
     Recargar() {
 
         oVCliente.SetTable(aClientes);

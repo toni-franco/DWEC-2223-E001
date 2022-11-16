@@ -9,6 +9,7 @@
                 <th>Apellido</th>
                 <th>Email</th>
                 <th>Teléfono</th>
+                <th>Pais</th>
                 <th>Opciones</th>
             </tr>
         </table>
@@ -96,10 +97,19 @@
         }
         SetTable() {
             var Tabla = "";
-            Tabla = "<tr><th>Nombre</th><th>Apellidos</th><th>Email</th><th>Teléfono</th><th>Opciones</th></tr>"
+            Tabla = "<tr><th>Nombre</th><th>Apellidos</th><th>Email</th><th>Teléfono</th><th>País</th><th>Opciones</th></tr>"
             if (Array.isArray(aClientes)) {
                 for (var i = 0; i < aClientes.length; i++) {
-                    Tabla = Tabla + "<tr id='fila" + i + "'><td>" + aClientes[i].fname + "</td><td>" + aClientes[i].lname + "</td><td>" + aClientes[i].email + "</td><td>" + aClientes[i].phone + "</td><td><button onclick='BorrarFila(" + i + ")' id='Borrar'>Borrar</button><button onclick='SeleccionarFila(" + i + ")' id='Seleccionar'>Seleccionar</button></td><tr>";
+                    Tabla = Tabla + "<tr id='fila" + i + "'><td>" + aClientes[i].fname + "</td><td>" + aClientes[i].lname 
+                    Tabla = Tabla + "</td><td>" + aClientes[i].email + "</td><td>" + aClientes[i].phone 
+                    var pais = aClientes[i].id_pais
+                   // console.log("PAISSSSS= "+pais)
+                    // Buscar 
+                    var Enc=0;
+                    for(var m=0;m<aPaises.length;m++)
+                        if(aPaises[m].id==pais) {Enc=m}
+
+                    Tabla = Tabla + "</td><td>" + aPaises[Enc].nombre + "</td><td><button onclick='ctlCliente.BorrarFila(" + i + ")' id='Borrar'>Borrar</button><button onclick='ctlCliente.SeleccionarFila(" + i + ")' id='Seleccionar'>Seleccionar</button></td><tr>";
                 }
             }
             document.getElementById('tClientes').innerHTML = "";
@@ -178,24 +188,7 @@
 
 <script type="text/javascript" src="./cClienteH.js"></script>
 
-<script>
-    function BorrarFila(fila) {
-        // Borrar de la BD
-        var rdo=omClientes.DelCliente(fila);
-        if (rdo ==="1") {
-            document.getElementById("fila" + fila).remove();
-        }
-        
-    }
-    function SeleccionarFila(fila) {
-        oVCliente.posicion = fila;
-        document.getElementById("Editar").style.display = "block";
-        document.getElementById("Tabla").style.display = "none";
-        console.log("Posicion: "+fila)
-        //oVCliente.SetVista(omClientes.getCliente(fila));
-        oVCliente.SetVista(aClientes[fila]);
-    }
-</script>
+
 <script>
     class vPaises {
         constructor() {

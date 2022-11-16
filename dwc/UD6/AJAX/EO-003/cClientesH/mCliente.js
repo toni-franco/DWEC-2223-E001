@@ -63,9 +63,11 @@ class mClientes {
     console.log(phptext);
     if (phptext == "Error") {
       console.log("Algo no ha funcionado en la BBDD")
+      return "Error"
     } else {
       console.log("Borrado correctamente")
       this.aClientes.pop(cliente);
+      return "1"
     }
   }
 
@@ -95,7 +97,7 @@ class mClientes {
     if (phptext == "Error") {
       console.log("Algo no ha funcionado en la BBDD")
     } else {
-      cliente.id = phptext;
+      //cliente.id = phptext;
     }
   }
 
