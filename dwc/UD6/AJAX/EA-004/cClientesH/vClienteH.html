@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div id="Tabla">
+        <table id="tClientes" style="margin: 20px;" border="1">
+            <tr id="header">
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Pais</th>
+                <th>Opciones</th>
+            </tr>
+        </table>
+
+        <button id="CargaClientes">Recargar Tabla</button>
+    </div>
+    <div id="Editar">
+        <form>
+            <p>
+                <label>Id</label><br>
+                <input type="text" id="id" name="Id" readonly>
+            </p>
+            <p>
+                <label>Genero</label><br>
+                <label>
+                    <input type="radio" name="genero" id="mr" value="mr">
+                    Mr
+                </label>
+                <label>
+                    <input type="radio" name="genero" id="mrs" value="mrs">
+                    Mrs
+                </label>
+                <label>
+                    <input type="radio" name="genero" id="miss" value="miss">
+                    Miss
+                </label>
+            </p>
+
+            <p>
+                <label>First name</label><br>
+                <input type="text" id="fname" name="first_name">
+            </p>
+            <p>
+                <label>Last name</label><br>
+                <input type="text" id="lname" name="last_name">
+            </p>
+            <p>
+                <label>Email</label><br>
+                <input type="email" name="email" id="email" required>
+            </p>
+            <p>
+                <label>Phone number</label><br>
+                <input type="tel" id="tel" name="phone">
+            </p>
+            <p>
+                <label>Password</label><br>
+                <input type="password" id="passwd" name="password">
+            </p>
+            <p>
+                <label>Pais: </label><br>
+                <select id="id_pais">
+                    <option value="" disabled selected>Seleccione un Pais...</option>
+                </select>
+            </p>
+            <p>
+                <label>
+                    <input type="checkbox" id="terms" value="terms">
+                    I agree to the <a href="/terms">terms and conditions</a>
+                </label>
+            </p>
+
+        </form>
+        <button id="AñadirCliente">Añadir</button>
+        <button id="ModificarCliente">Modificar</button>
+        <button id="VerTabla">Ver tabla</button>
+    </div>
+   
+
+</body>
+<script type="text/javascript" src="./mCliente.js"></script>
+<script type="text/javascript" src="./mPais.js"></script>
+
+
+<script>
+
+    document.getElementById("Editar").style.display = "none";
+    document.getElementById("Tabla").style.display = "block";
+
+    var posicion = "";
+    class vClienteH {
+        constructor() {
+            var posicion = "";
+            var aBorrar = "";
+
+        }
+        SetTable() {
+            var Tabla = "";
+            Tabla = "<tr><th>Nombre</th><th>Apellidos</th><th>Email</th><th>Teléfono</th><th>País</th><th>Opciones</th></tr>"
+            if (Array.isArray(aClientes)) {
+                for (var i = 0; i < aClientes.length; i++) {
+                    Tabla = Tabla + "<tr id='fila" + i + "'><td>" + aClientes[i].fname + "</td><td>" + aClientes[i].lname 
+                    Tabla = Tabla + "</td><td>" + aClientes[i].email + "</td><td>" + aClientes[i].phone 
+                    var pais = aClientes[i].id_pais
+                   // console.log("PAISSSSS= "+pais)
+                    // Buscar 
+                    var Enc=0;
+                    for(var m=0;m<aPaises.length;m++)
+                        if(aPaises[m].id==pais) {Enc=m}
+
+                    Tabla = Tabla + "</td><td>" + aPaises[Enc].nombre + "</td><td><button onclick='ctlCliente.BorrarFila(" + i + ")' id='Borrar'>Borrar</button><button onclick='ctlCliente.SeleccionarFila(" + i + ")' id='Seleccionar'>Seleccionar</button></td><tr>";
+                }
+            }
+            document.getElementById('tClientes').innerHTML = "";
+            document.getElementById('tClientes').innerHTML = Tabla;
+        }
+
+        SetVista(cliente) {
+            console.log(cliente);
+            if (document.getElementById('mr').value == cliente.genero) {
+                document.getElementById('mr').checked = true;
+            }
+            if (document.getElementById('mrs').value == cliente.genero) {
+                document.getElementById('mrs').checked = true;
+            }
+            if (document.getElementById('miss').value == cliente.genero) {
+                document.getElementById('miss').checked = true;
+            }
+            document.getElementById('id').value = cliente.id;
+            document.getElementById('fname').value = cliente.fname;
+            document.getElementById('lname').value = cliente.lname;
+            document.getElementById('email').value = cliente.email;
+            document.getElementById('tel').value = cliente.phone;
+            document.getElementById('passwd').value = cliente.passwd;
+            document.getElementById('id_pais').options.item(cliente.id_pais - 1).selected = 'selected';
+            document.getElementById('terms').checked = true;
+        }
+        getPosicion() {
+            return this.posicion;
+        }
+        getVista() {
+
+
+            var elementsTitle = document.getElementsByName("title");
+
+            var genero = "";
+            for (var i = 0; i < elementsTitle.length; i++) {
+                if (elementsTitle[i].checked) {
+                    genero = elementsTitle[i].value;
+                }
+            }
+            var id = document.getElementById("id").value;
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("tel").value;
+            var passwd = document.getElementById("passwd").value;
+            var id_pais = document.getElementById("id_pais").value;
+            console.log("Se utilizará la id de pais: " + id_pais);
+            id_pais++;
+
+
+            //var idCliente = aClientes[this.VisualizoObj].id;
+            var cli = new pCliente(id, genero, fname, lname, email, phone, passwd, id_pais);
+
+
+            return cli;
+        }
+
+        ClearVista() {
+            document.getElementById('mr').checked = false;
+            document.getElementById('mrs').checked = false;
+            document.getElementById('miss').checked = false;
+            document.getElementById('id').value = null;
+            document.getElementById('fname').value = null;
+            document.getElementById('lname').value = null;
+            document.getElementById('email').value = null;
+            document.getElementById('tel').value = null;
+            document.getElementById('passwd').value = null;
+            document.getElementById('id_pais').value = null;
+            document.getElementById('terms').checked = false;
+        }
+    }
+
+
+</script>
+
+<script type="text/javascript" src="./cClienteH.js"></script>
+
+
+<script>
+    class vPaises {
+        constructor() {
+            this.SetSelectPaises();
+            var select = document.getElementById('id_pais');
+            select.addEventListener('change',
+                function () {
+                    var selectedOption = this.options[select.selectedIndex];
+                    console.log(selectedOption.value + ': ' + selectedOption.text);
+                });
+        }
+        SetSelectPaises() {
+            console.log("Entra al setSelectPaises")
+            var Select = "";
+            if (Array.isArray(aPaises)) {
+                for (var i = 0; i < aPaises.length; i++) {
+                    Select = Select + "<option value=" + i + "><td>" + aPaises[i].nombre + "</option>";
+                    //console.log("Vista: " + aPaises[i].nombre);
+
+                }
+            }
+
+            document.getElementById('id_pais').innerHTML = Select
+        }
+
+
+
+
+    }
+    oVPais = new vPaises();
+
+</script>
+
+</html>
