@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--
+Es recomendado mantener la la consola del navegador abierta (F12) y 
+habilitar la casilla de disable cache en la solapa de network
+ o bien poner estas lineas:
+  -->
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+
+</head>
+
+<body>
+  <script>
+    function cargar(archivo) {
+      let contenedor = document.getElementById("cont1");
+      contenedor.setAttribute('src', archivo)
+    }
+  </script>
+ 
+  <br>
+
+  <iframe id="cont1" width="800" height="900" src="./cClientes/vCliente.html"></iframe>
+
+
+
+
+
+</body>

@@ -1,0 +1,1 @@
+INSERT INTO `Compras` (`id`, `idCliente`, `cantidad`, `Descripción`, `Precio`, `Foto`) VALUES (NULL, '30', '1', 'Cremaet', '2', 'dwc/examen/imgs/cafe.png');

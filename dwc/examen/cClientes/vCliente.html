@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UD5-EO-001</title>
+
+  <!--
+Es recomendado mantener la la consola del navegador abierta (F12) y 
+habilitar la casilla de disable cache en la solapa de network
+ o bien poner estas lineas:
+  -->
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+
+
+
+</head>
+
+<body>
+
+  <form>
+    <p>
+      <label>Id</label><br>
+      <input type="text" id="id" name="Id" readonly>
+    </p>
+    <p>
+      <label>Genero</label><br>
+      <label>
+        <input type="radio" name="genero" id="mr" value="mr">
+        Mr
+      </label>
+      <label>
+        <input type="radio" name="genero" id="mrs" value="mrs">
+        Mrs
+      </label>
+      <label>
+        <input type="radio" name="genero" id="miss" value="miss">
+        Miss
+      </label>
+    </p>
+
+    <p>
+      <label>First name</label><br>
+      <input type="text" id="fname" name="first_name">
+    </p>
+    <p>
+      <label>Last name</label><br>
+      <input type="text" id="lname" name="last_name">
+    </p>
+    <p>
+      <label>Email</label><br>
+      <input type="email" name="email" id="email" required>
+    </p>
+    <p>
+      <label>Phone number</label><br>
+      <input type="tel" id="tel" name="phone">
+    </p>
+    <p>
+      <label>Password</label><br>
+      <input type="password" id="passwd" name="password">
+    </p>
+    <p>
+      <label>Pais: </label><br>
+      <select id="id_pais">
+        <option value="" disabled selected>Seleccione un Pais...</option>
+      </select>
+    </p>
+    <p>
+      <label>
+        <input type="checkbox" id="terms" value="terms">
+        I agree to the <a href="/terms">terms and conditions</a>
+      </label>
+    </p>
+
+  </form>
+
+  <button id="aDiv1">Primero</button>
+  <button id="RetrocedeCliente">Atrás</button>
+  <button id="AvanzarCliente">Avanza </button>
+  <button id="aDiv2">último</button>
+  <button id="AñadirCliente">Añadir</button>
+  <button id="ModificarCliente">Modificar</button>
+  <button id="BorrarCliente">Borrar</button>
+  <button id="CargaClientes">Cargar</button>
+  <button id="VerCompras">Ver compras</button>
+  <button id="OcultarCompras">Ocultar compras</button>
+
+  <div id="contenedor-tabla-compras">
+
+    <table id="tCompras" style="margin: 20px;" border="1">
+      <tr id="header">
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Foto</th>
+        <th>Total</th>
+      </tr>
+    </table>
+
+
+  </div>
+
+</body>
+<script type="text/javascript" src="./mCompra.js"></script>
+<script type="text/javascript" src="./mCliente.js"></script>
+<script type="text/javascript" src="./mPais.js"></script>
+<script>
+
+  class vCompras {
+    constructor() {
+    }
+    SetTable(lista) {
+      var Tabla = "";
+      
+
+      if (Array.isArray(lista)) {
+        ////console.log(lista)
+        Tabla = "<tr><th>Cantidad</th><th>Descripción</th><th>Precio</th><th>Foto</th><th>Total</th></tr>"
+        var total_precio = 0;
+        for (var i = 0; i < lista.length; i++) {
+          total_precio = total_precio + (lista[i].cantidad * lista[i].Precio);
+          Tabla = Tabla + "<tr id='fila" + i + "'><td>" + lista[i].cantidad + "</td><td>" + lista[i].Descripción
+          var imagen="<img src= "+ aCompras[i].Foto +"  width='40' height='40'>";
+          Tabla = Tabla + "</td><td>" + lista[i].Precio + "</td><td>" +imagen + "</td><td style='text-align:center; vertical-align:middle'>" + lista[i].cantidad * lista[i].Precio
+
+        }
+        Tabla = Tabla + "<tr><td style='border: none;'></td><td style='border: none;'></td><td style='border: none;'></td><td> Total: </td><td id='total_precio' style='text-align:center; vertical-align:middle'>" + total_precio + "</td><tr>"
+    }
+      //////console.log(Tabla);
+      document.getElementById('tCompras').innerHTML = "";
+      document.getElementById('tCompras').innerHTML = Tabla;
+    }
+  }
+</script>
+<script type="text/javascript" src="./cCliente.js"></script>
+<script>
+  class vPaises {
+    constructor() {
+      this.SetSelectPaises();
+      var select = document.getElementById('id_pais');
+      select.addEventListener('change',
+        function () {
+          var selectedOption = this.options[select.selectedIndex];
+          //////console.log(selectedOption.value + ': ' + selectedOption.text);
+        });
+    }
+
+
+
+    SetSelectPaises() {
+      //////console.log("Entra al setSelectPaises")
+      var Select = "";
+      if (Array.isArray(aPaises)) {
+        for (var i = 0; i < aPaises.length; i++) {
+          Select = Select + "<option value=" + i + "><td>" + aPaises[i].nombre + "</option>";
+          ////////console.log("Vista: " + aPaises[i].nombre);
+
+        }
+      }
+
+      document.getElementById('id_pais').innerHTML = Select
+    }
+
+
+
+
+  }
+
+  oVPais = new vPaises();
+
+</script>
+<script>
+
+ // document.getElementById("contenedor-tabla-compras").style.display = "none";
+</script>
+
+</html>
